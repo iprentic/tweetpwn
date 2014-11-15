@@ -40,6 +40,10 @@ body {
 #header tr td {
   padding-left: 20px;
 }
+
+.noshow {
+  display:none;
+}
 </style>
 
 </head>
@@ -50,30 +54,25 @@ body {
     <tr>
       <td width="20%"> <img src="officerTBT-04.png" alt="OfficerTBT" width="217" height="227"> </td>
       <td width="70%"  id="title"> <p> Now I aint sayin its unacceptable to post a #tbt when it's not Thursday...but it is completely unacceptable and perpetrators deserve to be shamed for their wrongdoing. If you have any self respect you will realize this travesty and join us in shaming these #tbt failures.  </p> </td>
-      <td width="10%"> <p id="a"> <img src="loadbutton-05.png" > </p> </td>
+      <td width="10%"> <img id="reload-button" src="loadbutton-05.png"><img id="reload-button-pressed" src="loadbutton-pressed-07.png" class="noshow"> </td>
     </tr>
   </tbody>
 </table>
 
-
-
-
-
-
-              <table id="not-thursday-pictures">
-                <tbody>
-                  <tr>
-                    <td width="30%" id = "pic1"></td>
-                    <td width="30%" id = "pic2"></td>
-                    <td width="30%" id = "pic3"></td>
-                    </tr>
-                    <tr>
-                    <td id = "pic4"></td>
-                    <td id = "pic5"></td>
-                    <td id = "pic6"></td>
-                    </tr>
-                    </tbody>
-                    </table>
+  <table id="not-thursday-pictures">
+    <tbody>
+      <tr>
+        <td width="30%" id = "pic1"></td>
+        <td width="30%" id = "pic2"></td>
+        <td width="30%" id = "pic3"></td>
+        </tr>
+        <tr>
+        <td id = "pic4"></td>
+        <td id = "pic5"></td>
+        <td id = "pic6"></td>
+        </tr>
+        </tbody>
+        </table>
 
 <script>
 
@@ -82,8 +81,22 @@ var NUM_IMAGES = 6;
 $(document).ready(function() {
   // bind event listeners
   $('#reload-button').click(fetchImages);
+  $('#reload-button-pressed').click(fetchImages);
+  $('#reload-button').mousedown(pressButton);
+  $('#reload-button-pressed').mouseup(pressButtonAndFetchImages);
+
   fetchImages();
 });
+
+function pressButton() {
+  $('#reload-button').toggleClass('noshow');
+  $('#reload-button-pressed').toggleClass('noshow');
+}
+
+function pressButtonAndFetchImages() {
+  pressButton();
+  fetchImages();
+}
 
 
 function fetchImages() {
