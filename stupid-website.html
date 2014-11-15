@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<p id="a"> <img src="/Users/kiraprentice/Documents/tweetpwn/loadbutton-05.png"> </p>
+<p id="a"> <img src="loadbutton-05.png"> </p>
 
               <table id="picture-choices">
                 <tbody>
@@ -52,14 +52,17 @@ function renderImages(response) {
   var photoIndices = getPhotoIndices(photos);
   for (i = 0; i < NUM_IMAGES; i++){
     var pic = photos[photoIndices[i]];
+    console.log(pic);
     myURLs[i] = pic.images.standard_resolution.url;
     myTags[i] = pic.tags;
     $('#pic' + (i+1)).html(createImageHTML(pic.images.standard_resolution.url,
         picSize, i));
+    var date = new Date(1000*pic.created_time);
+    var day = date.getDay();
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var name = pic.user.username;
+    $('#pic' + (i+1)).append('<p>Posted by ' + name + ' on ' + days[day] + '</p>');
   }
-  
-  $('#choose-pic').removeClass('noshow');
-  $('#choose-tag').addClass('noshow');
 }
 
 /**
@@ -91,14 +94,9 @@ function getPhotoIndices(mediaArray) {
     return chosen;
   }
 
-  var possibleIndices = new Array();
-  for (var i = 0; i < notOnThursday.length; i++) {
-    possibleIndices[i] = i;
-  }
-
   // Try to get NUM_IMAGES images
   for( var i = 0; i < NUM_IMAGES; i++){
-  	nextIndex = possibleIndices[i];
+  	nextIndex = notOnThursday[i];
   	chosen.push(nextIndex);
   }
   return chosen;
