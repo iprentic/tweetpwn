@@ -9,6 +9,28 @@ body {
   font-color: rgb(69,131,196);
 }
 
+#not-thursday-pictures {
+    position: relative;
+    margin: 10px auto;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+#not-thursday-pictures tr {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+}
+
+#not-thursday-pictures tr td {
+    margin: 0;
+    padding: 4px 8px;
+    border: 0;
+     padding-bottom: 3em;
+}
 </style>
 
 </head>
@@ -18,7 +40,7 @@ body {
 
 <p id="reload-button"> <img src="loadbutton-05.png"> </p>
 
-              <table id="picture-choices">
+              <table id="not-thursday-pictures">
                 <tbody>
                   <tr>
                     <td width="30%" id = "pic1"></td>
@@ -72,7 +94,7 @@ function renderImages(response) {
     var day = date.getDay();
     var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     var name = pic.user.username;
-    $('#pic' + (i+1)).append('<p>Posted by ' + name + ' on ' + days[day] + '</p>');
+    $('#pic' + (i+1)).append('<p>Posted by <a href="http://instagram.com/'+ name+'" target="_blank">@'+name+'</a> on <strong>' + days[day] + '?!!?!?!</strong></p>');
   }
 }
 
