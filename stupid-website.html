@@ -36,9 +36,17 @@ body {
 </head>
 <body>
 
-<img src="officerTBT-04.png" alt="OfficerTBT" width="217" height="227">
+<table id="header">
+  <tbody>
+    <tr>
+      <td width="20%"> <img src="officerTBT-04.png" alt="OfficerTBT" width="217" height="227"> </td>
+      <td width="70%" id="title"> <p> Text goes here </p> </td>
+      <td width="10%"> <p id="a"> <img src="loadbutton-05.png" > </p> </td>d
 
-<p id="reload-button"> <img src="loadbutton-05.png"> </p>
+
+
+
+
 
               <table id="not-thursday-pictures">
                 <tbody>
@@ -64,7 +72,6 @@ $(document).ready(function() {
   $('#reload-button').click(fetchImages);
   fetchImages();
 });
-
 
 
 function fetchImages() {
