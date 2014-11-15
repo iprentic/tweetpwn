@@ -1,24 +1,26 @@
 <html><head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </head>
 <body>
- <p id="a">hellooooo</p>
+
+<p id="a"> <img src="/Users/kiraprentice/Documents/tweetpwn/loadbutton-05.png"> </p>
+
               <table id="picture-choices">
                 <tbody>
                   <tr>
                     <td id = "pic1"></td>
                     <td id = 'pic2'></td>
-                    </tr>
-                  <tr>
                     <td id = "pic3"></td>
-                    <td id = "pic4"></td>
                     </tr>
-                                      <tr>
+                    <tr>
+                    <td id = "pic4"></td>
                     <td id = "pic5"></td>
                     <td id = "pic6"></td>
                     </tr>
                     </tbody>
                     </table>
+
 <script>
 
 var NUM_IMAGES = 6;
@@ -27,6 +29,8 @@ $(document).ready(function() {
   // bind event listeners
   $('#a').click(coolFun);
 });
+
+
 
 function coolFun() {
 	var tagName = 'tbt';
