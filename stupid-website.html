@@ -16,7 +16,7 @@ body {
 
 <img src="officerTBT-04.png" alt="OfficerTBT" width="217" height="227">
 
-<p id="a"> <img src="loadbutton-05.png"> </p>
+<p id="reload-button"> <img src="loadbutton-05.png"> </p>
 
               <table id="picture-choices">
                 <tbody>
@@ -39,13 +39,13 @@ var NUM_IMAGES = 6;
 
 $(document).ready(function() {
   // bind event listeners
-  $('#a').click(coolFun);
-  coolFun();
+  $('#reload-button').click(fetchImages);
+  fetchImages();
 });
 
 
 
-function coolFun() {
+function fetchImages() {
 	var tagName = 'tbt';
   url = 'https://api.instagram.com/v1/tags/' + tagName + 
         '/media/recent?callback=?&client_id=68de522f648043ee922bcf14545cfa7a';
@@ -64,7 +64,6 @@ function renderImages(response) {
   var photoIndices = getPhotoIndices(photos);
   for (i = 0; i < NUM_IMAGES; i++){
     var pic = photos[photoIndices[i]];
-    console.log(pic);
     myURLs[i] = pic.images.standard_resolution.url;
     myTags[i] = pic.tags;
     $('#pic' + (i+1)).html(createImageHTML(pic.images.standard_resolution.url,
